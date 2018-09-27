@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Foxit_PDF_TEST
 
         private PDFSignatureMgr m_SigFieldMgr;
 
+        private int m_nFileIndex = 0;
         bool state = true;
 
         public Form1()
@@ -46,7 +48,7 @@ namespace Foxit_PDF_TEST
         }
 
         /// <summary>
-        /// 隐藏或者显示界面组件
+        /// 隐藏或者显示菜单界面组件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -61,6 +63,49 @@ namespace Foxit_PDF_TEST
                 state = true;
             }
             m_AX.ShowToolBar(state);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (m_SigFieldMgr == null)
+            {
+                MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
+                return;
+            }
+
+            PDFSignatureField sigfield = m_SigFieldMgr.Add(0, 100, 300, 300, 150);
+            //Prepare Signature info
+            sigfield.Reason = "签名盖章";
+            sigfield.Signer = "LC";
+            sigfield.SetSignerDN("XXXX-XXX-XXXXXXXXX");
+            sigfield.Location = "China,HeFei";
+            bool ret = sigfield.SetAPOptions(Convert.ToInt32("0x080", 16));      //show all
+            ret = sigfield.SetAPText("签名样本");
+
+            //Set display image
+            string strPath = System.Windows.Forms.Application.StartupPath;
+            string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
+            ret = sigfield.SetAPImage(strImagePath, true, 0xFFFFFF);
+
+            //string pageRange = "0-1";
+            //sigfield.SetStraddlePages(pageRange);
+
+            //Set digital certification. This is need to be set if you will sign by default ,but not by customer algorithm.
+            string strCertPath = strPath + "..\\..\\..\\res\\foxit.pfx";
+            ret = sigfield.SetCertPath(strCertPath, "123456");
+
+            //Sign and save as pdf
+            m_nFileIndex++;
+            string csFileIndex = m_nFileIndex.ToString() + ".pdf";
+            var path = AppDomain.CurrentDomain.BaseDirectory + @"PDF\";
+            Directory.CreateDirectory(path);
+            string strSignedFile = path + csFileIndex;
+            ret = m_SigFieldMgr.SignDocument(sigfield, strSignedFile, true);
+            if (!ret)
+            {
+                MessageBox.Show("签署文件失败.", "Default Sign");
+
+            }
         }
     }
 }
