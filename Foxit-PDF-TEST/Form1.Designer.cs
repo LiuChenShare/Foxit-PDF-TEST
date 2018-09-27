@@ -28,13 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.m_AX = new AxFoxitPDFSDKProLib.AxFoxitPDFSDK();
+            ((System.ComponentModel.ISupportInitialize)(this.m_AX)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // m_AX
+            // 
+            this.m_AX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_AX.Enabled = true;
+            this.m_AX.Location = new System.Drawing.Point(0, 0);
+            this.m_AX.Name = "m_AX";
+            this.m_AX.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("m_AX.OcxState")));
+            this.m_AX.Size = new System.Drawing.Size(856, 721);
+            this.m_AX.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(856, 721);
+            this.Controls.Add(this.m_AX);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.m_AX)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
+        private AxFoxitPDFSDKProLib.AxFoxitPDFSDK m_AX;
+
+
+
         #endregion
+
+        //private AxFoxitPDFSDKProLib.AxFoxitPDFSDK m_AX;
     }
 }
 

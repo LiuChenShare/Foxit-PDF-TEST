@@ -2,9 +2,9 @@
 对接福晰SDK
 
 ## 验证如下功能
-1. 打开pdf文件
-2. 展示pdf文件
-3. 跳转到指定页面
+1. 打开pdf文件（使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK）
+2. 展示pdf文件（使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK）
+3. 跳转到指定页面（使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK）
 4. pdf设置（隐藏或者显示界面组件）
 5. 插入图片或者图章
 6. 插入的图片或者图章可以移动、修改大小和删除
