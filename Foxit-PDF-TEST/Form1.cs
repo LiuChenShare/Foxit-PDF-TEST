@@ -17,6 +17,8 @@ namespace Foxit_PDF_TEST
 
         private PDFSignatureMgr m_SigFieldMgr;
 
+        bool state = true;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,9 +28,12 @@ namespace Foxit_PDF_TEST
         {
 
             //use UnLockActiveX Method to UnLock ActiveX 
+            //m_AX.UnLockActiveX("Licence_ID", "Unlock_code");
             m_AX.UnLockActiveX("Licence_ID", "Unlock_code");
 
             m_AX.ShowTitleBar(false);
+            
+
             string strPath = System.Windows.Forms.Application.StartupPath;
             //string strFilePath = strPath + "..\\..\\..\\res\\test.pdf";
             string strFilePath = strPath + "..\\..\\..\\res\\王二蛋+询问笔录+第0次.pdf";
@@ -38,6 +43,24 @@ namespace Foxit_PDF_TEST
             {
                 MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
             }
+        }
+
+        /// <summary>
+        /// 隐藏或者显示界面组件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (state)
+            {
+                state = false;
+            }
+            else
+            {
+                state = true;
+            }
+            m_AX.ShowToolBar(state);
         }
     }
 }

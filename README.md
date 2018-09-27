@@ -2,10 +2,25 @@
 对接福晰SDK
 
 ## 验证如下功能
-1. 打开pdf文件（使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK）
-2. 展示pdf文件（使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK）
-3. 跳转到指定页面（使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK）
-4. pdf设置（隐藏或者显示界面组件）
+### 1. 打开pdf文件
+
+```
+m_AX.OpenFile(strFilePath, "");
+```
+
+### 2. 展示pdf文件
+
+使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK
+
+### 3. 跳转到指定页面
+
+使用AxFoxitPDFSDKProLib.AxFoxitPDFSDK界面组件
+
+### 4. pdf设置（隐藏或者显示界面组件）
+
+```
+    m_AX.ShowToolBar(false);    //隐藏界面组件
+```
 5. 插入图片或者图章
 6. 插入的图片或者图章可以移动、修改大小和删除
 7. 获取插入图片的坐标
