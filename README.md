@@ -19,11 +19,25 @@ m_AX.OpenFile(strFilePath, "");
 ### 4. pdf设置（隐藏或者显示界面组件）
 
 ```
-    m_AX.ShowToolBar(false);    //隐藏界面组件
+m_AX.ShowToolBar(false);    //隐藏界面组件
 ```
-5. 插入图片或者图章
-6. 插入的图片或者图章可以移动、修改大小和删除
-7. 获取插入图片的坐标
+
+### 5. 插入图片或者图章
+
+```
+sigfield.SetAPImage(strImagePath, true, 0xFFFFFF);
+```
+
+### 6. 插入的图片或者图章可以移动、修改大小和删除
+
+```
+m_SigFieldMgr.Add(0, 100, 300, 300, 150);   //页码，左，上，右，下。0点位置为左下角
+```
+
+### 7. 获取插入图片的坐标
+
+坐标为add时设置
+
 8. 插入图片到绘制的区域
 9. pdf单击、双击是事件获取
 10. 保存pdf文件
