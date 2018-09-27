@@ -32,3 +32,8 @@ m_AX.GoToPage(0);
 ```
 m_AX.ShowToolBar(false);    //隐藏界面组件
 ```
+
+## 8.生成大纲（Iterate the tree outline of the PDF document）
+
+## 9.搜索
+

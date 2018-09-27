@@ -28,3 +28,7 @@ m_AX.OpenFile(strFilePath, "");
 9. pdf单击、双击是事件获取
 10. 保存pdf文件
 
+
+## 相关接口文档
+
+[IPDFSignatureField](IPDFSignatureField.md)：帮助访问和操作签名字段。
