@@ -48,7 +48,7 @@ namespace Foxit_PDF_TEST
                 MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
             }
 
-            m_AX.OnClick += OnClick;
+            //m_AX.OnClick += OnClick;
 
 
         }
@@ -276,8 +276,53 @@ namespace Foxit_PDF_TEST
             
         }
 
+
         #endregion
 
+        #region 签章
+        /// <summary>
+        /// 签章
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (m_SigFieldMgr == null)
+            {
+                MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
+                return;
+            }
 
+            //Set display image
+            string strPath = System.Windows.Forms.Application.StartupPath;
+            string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
+
+            //var Pattern = m_SigFieldMgr.CreatePatternSigField(strImagePath, false, 0xFFFFFF, 50, 50);
+            m_SigFieldMgr.CreatePatternSigField(strImagePath, true, 0xFFFFFF, 50, 50);
+            m_SigFieldMgr.SetCurPatternSigField(0);
+            m_AX.CurrentTool = "ESignature Tool";
+            m_AX.bHighlightFormFields = false;
+
+            //string pageRange = "0-1";
+            //sigfield.SetStraddlePages(pageRange);
+
+            //Set digital certification. This is need to be set if you will sign by default ,but not by customer algorithm.
+            //string strCertPath = strPath + "..\\..\\..\\res\\foxit.pfx";
+            //ret = sigfield.SetCertPath(strCertPath, "123456");
+
+            ////Sign and save as pdf
+            //m_nFileIndex++;
+            //string csFileIndex = m_nFileIndex.ToString() + ".pdf";
+            //var path = AppDomain.CurrentDomain.BaseDirectory + @"PDF\";
+            //Directory.CreateDirectory(path);
+            //string strSignedFile = path + csFileIndex;
+            //ret = m_SigFieldMgr.SignDocument(sigfield, strSignedFile, true);
+            //if (!ret)
+            //{
+            //    MessageBox.Show("签署文件失败.", "Default Sign");
+
+            //}
+        }
+        #endregion
     }
 }

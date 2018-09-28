@@ -37,6 +37,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.m_AX = new AxFoxitPDFSDKProLib.AxFoxitPDFSDK();
+            this.button6 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_AX)).BeginInit();
@@ -49,6 +50,7 @@
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Controls.Add(this.button5);
+            this.flowLayoutPanel1.Controls.Add(this.button6);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -124,6 +126,16 @@
             this.m_AX.Size = new System.Drawing.Size(856, 674);
             this.m_AX.TabIndex = 0;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(328, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(59, 42);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "签章";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -148,6 +160,7 @@
         private System.Windows.Forms.Panel panel1;
         private AxFoxitPDFSDKProLib.AxFoxitPDFSDK m_AX;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
 
 
 
