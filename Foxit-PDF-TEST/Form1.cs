@@ -53,6 +53,8 @@ namespace Foxit_PDF_TEST
 
         }
 
+
+        #region 签字
         /// <summary>
         /// 隐藏或者显示菜单界面组件
         /// </summary>
@@ -212,9 +214,10 @@ namespace Foxit_PDF_TEST
 
             var sigfield = m_SigFieldMgr.Get(0);
 
-            m_SigFieldMgr.Remove(sigfield);
-
-            m_SigFieldMgr.Clear(sigfield);
+            if (!m_SigFieldMgr.Remove(sigfield))
+            {
+                m_SigFieldMgr.Clear(sigfield);
+            }
 
         }
 
@@ -223,7 +226,7 @@ namespace Foxit_PDF_TEST
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void OnClick(object sender, _DFoxitPDFSDKEvents_OnClickEvent e)
+        private void OnClick(object sender, _DFoxitPDFSDKEvents_OnClickEvent e)
         {
             try
             {
@@ -238,8 +241,6 @@ namespace Foxit_PDF_TEST
                 float pageY = 0;
 
                 m_AX.ConvertClientCoordToPageCoord(e.clientX, e.clientY, ref index, ref pageX, ref pageY);
-
-
                 PDFSignatureField sigfield = m_SigFieldMgr.Add(index, pageX, pageY + 50, pageX + 50, pageY);
                 //PDFSignatureField sigfield = m_SigFieldMgr.Add(0, 100, 300, 300, 150);
                 //Prepare Signature info
@@ -260,18 +261,23 @@ namespace Foxit_PDF_TEST
                 var path = AppDomain.CurrentDomain.BaseDirectory + @"PDF\";
                 Directory.CreateDirectory(path);
                 string strSignedFile = path + csFileIndex;
+                m_AX.SaveAs(strSignedFile);
                 //ret = m_SigFieldMgr.SignDocument(sigfield, strSignedFile, true);
-                if (!ret)
-                {
-                    MessageBox.Show("签署文件失败.", "Default Sign");
+                //if (!ret)
+                //{
+                //    MessageBox.Show("签署文件失败.", "Default Sign");
 
-                }
+                //}
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
             
         }
+
+        #endregion
+
+
     }
 }
