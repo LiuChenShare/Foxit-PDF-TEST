@@ -1,4 +1,5 @@
 ﻿
+using AxFoxitPDFSDKProLib;
 using FoxitPDFSDKProLib;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Foxit_PDF_TEST
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace Foxit_PDF_TEST
             m_AX.UnLockActiveX("Licence_ID", "Unlock_code");
 
             m_AX.ShowTitleBar(false);
-            
+
 
             string strPath = System.Windows.Forms.Application.StartupPath;
             //string strFilePath = strPath + "..\\..\\..\\res\\test.pdf";
@@ -45,6 +47,10 @@ namespace Foxit_PDF_TEST
             {
                 MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
             }
+
+            m_AX.OnClick += OnClick;
+
+
         }
 
         /// <summary>
@@ -107,7 +113,7 @@ namespace Foxit_PDF_TEST
 
             }
         }
-        
+
         /// <summary>
         /// 盖在最后一页
         /// </summary>
@@ -196,6 +202,76 @@ namespace Foxit_PDF_TEST
                 MessageBox.Show("签署文件失败.", "Default Sign");
 
             }
+            //MessageBox.Show("下面我将删除签名.", "Default Sign");
+            //m_SigFieldMgr.Clear(sigfield);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("下面我将删除签名.", "Default Sign");
+
+            var sigfield = m_SigFieldMgr.Get(0);
+
+            m_SigFieldMgr.Remove(sigfield);
+
+            m_SigFieldMgr.Clear(sigfield);
+
+        }
+
+        /// <summary>
+        /// 点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void OnClick(object sender, _DFoxitPDFSDKEvents_OnClickEvent e)
+        {
+            try
+            {
+                if (m_SigFieldMgr == null)
+                {
+                    MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
+                    return;
+                }
+
+                int index = 0;
+                float pageX = 0;
+                float pageY = 0;
+
+                m_AX.ConvertClientCoordToPageCoord(e.clientX, e.clientY, ref index, ref pageX, ref pageY);
+
+
+                PDFSignatureField sigfield = m_SigFieldMgr.Add(index, pageX, pageY + 50, pageX + 50, pageY);
+                //PDFSignatureField sigfield = m_SigFieldMgr.Add(0, 100, 300, 300, 150);
+                //Prepare Signature info
+                bool ret = sigfield.SetAPOptions(Convert.ToInt32("0x080", 16));      //只显示图片
+
+                //Set display image
+                string strPath = System.Windows.Forms.Application.StartupPath;
+                string strImagePath = strPath + "..\\..\\..\\res\\timestamp.png";
+                ret = sigfield.SetAPImage(strImagePath, true, 0xFFFFFF);
+
+                ////Set digital certification. This is need to be set if you will sign by default ,but not by customer algorithm.
+                string strCertPath = strPath + "..\\..\\..\\res\\foxit.pfx";
+                ret = sigfield.SetCertPath(strCertPath, "123456");
+
+                ////Sign and save as pdf
+                m_nFileIndex++;
+                string csFileIndex = m_nFileIndex.ToString() + ".pdf";
+                var path = AppDomain.CurrentDomain.BaseDirectory + @"PDF\";
+                Directory.CreateDirectory(path);
+                string strSignedFile = path + csFileIndex;
+                //ret = m_SigFieldMgr.SignDocument(sigfield, strSignedFile, true);
+                if (!ret)
+                {
+                    MessageBox.Show("签署文件失败.", "Default Sign");
+
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
     }
 }

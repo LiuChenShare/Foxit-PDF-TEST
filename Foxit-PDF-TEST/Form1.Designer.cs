@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.m_AX = new AxFoxitPDFSDKProLib.AxFoxitPDFSDK();
             this.flowLayoutPanel1.SuspendLayout();
@@ -47,6 +48,7 @@
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Controls.Add(this.button5);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -93,6 +95,16 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(263, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(59, 42);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "删";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.m_AX);
@@ -135,6 +147,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
         private AxFoxitPDFSDKProLib.AxFoxitPDFSDK m_AX;
+        private System.Windows.Forms.Button button5;
 
 
 
