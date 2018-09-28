@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foxit-PDF-TEST", "Foxit-PDF-TEST\Foxit-PDF-TEST.csproj", "{2DEC51DE-7424-430B-B33F-53B819C0AB68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foxit-PDF-Demo", "Foxit-PDF-Demo\Foxit-PDF-Demo.csproj", "{2736BBFC-47ED-4D46-83DE-1D4C8CDD6697}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2DEC51DE-7424-430B-B33F-53B819C0AB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DEC51DE-7424-430B-B33F-53B819C0AB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DEC51DE-7424-430B-B33F-53B819C0AB68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2736BBFC-47ED-4D46-83DE-1D4C8CDD6697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2736BBFC-47ED-4D46-83DE-1D4C8CDD6697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2736BBFC-47ED-4D46-83DE-1D4C8CDD6697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2736BBFC-47ED-4D46-83DE-1D4C8CDD6697}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

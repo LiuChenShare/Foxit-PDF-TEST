@@ -53,8 +53,6 @@ namespace Foxit_PDF_TEST
 
         }
 
-
-        #region 签字
         /// <summary>
         /// 隐藏或者显示菜单界面组件
         /// </summary>
@@ -72,6 +70,8 @@ namespace Foxit_PDF_TEST
             }
             m_AX.ShowToolBar(state);
         }
+
+        #region 签字
 
         private void button2_Click(object sender, EventArgs e)
         {
