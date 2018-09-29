@@ -72,9 +72,9 @@ namespace Foxit_PDF_Demo
             string strPath = System.Windows.Forms.Application.StartupPath;
             string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
             
-            m_SigFieldMgr.CreatePatternSigField(strImagePath, true, 0xFFFFFF, 50, 50);
-            m_SigFieldMgr.SetCurPatternSigField(0);
-            m_AX.CurrentTool = "ESignature Tool";
+            m_SigFieldMgr.CreatePatternSigField(strImagePath, true, 0xFFFFFF, 50, 50);  //创建签名模板，可用于添加签名对象
+            m_SigFieldMgr.SetCurPatternSigField(0);                                     //设置签名模板
+            m_AX.CurrentTool = "ESignature Tool";                                       //设置 ActiveX 当前使用的工具
         }
     }
 }
