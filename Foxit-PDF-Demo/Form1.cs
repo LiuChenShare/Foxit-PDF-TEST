@@ -103,5 +103,26 @@ namespace Foxit_PDF_Demo
                 MessageBox.Show("存储文件成功！", "保存文件");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            m_AX.CurrentTool = "ESignature Tool";
+
+            IPDFPageAnnots m_PageAnnots = m_AX.GetPageAnnots(0);
+
+            string strPath = System.Windows.Forms.Application.StartupPath;
+            string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
+
+            var annot = m_PageAnnots.AddAnnot(null, "Image", 100, 300, 300, 150);
+            annot.SetMediaPoster(strImagePath);
+            annot.Thickness = 0;
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            m_AX.CurrentTool = "Image Tool";
+        }
     }
 }
