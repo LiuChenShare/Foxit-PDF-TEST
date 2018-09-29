@@ -302,26 +302,39 @@ namespace Foxit_PDF_TEST
             m_SigFieldMgr.SetCurPatternSigField(0);
             m_AX.CurrentTool = "ESignature Tool";
             m_AX.bHighlightFormFields = false;
+        }
 
-            //string pageRange = "0-1";
-            //sigfield.SetStraddlePages(pageRange);
+        /// <summary>
+        /// 图章
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button7_Click(object sender, EventArgs e)
+        {
+            m_AX.CurrentTool = "ESignature Tool";
 
-            //Set digital certification. This is need to be set if you will sign by default ,but not by customer algorithm.
-            //string strCertPath = strPath + "..\\..\\..\\res\\foxit.pfx";
-            //ret = sigfield.SetCertPath(strCertPath, "123456");
+            IPDFPageAnnots m_PageAnnots = m_AX.GetPageAnnots(0);
 
-            ////Sign and save as pdf
-            //m_nFileIndex++;
-            //string csFileIndex = m_nFileIndex.ToString() + ".pdf";
-            //var path = AppDomain.CurrentDomain.BaseDirectory + @"PDF\";
-            //Directory.CreateDirectory(path);
-            //string strSignedFile = path + csFileIndex;
-            //ret = m_SigFieldMgr.SignDocument(sigfield, strSignedFile, true);
-            //if (!ret)
-            //{
-            //    MessageBox.Show("签署文件失败.", "Default Sign");
+            string strPath = System.Windows.Forms.Application.StartupPath;
+            string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
+            
+            var annot = m_PageAnnots.AddAnnot(null, "Image", 100, 300, 300, 150);
+            annot.SetMediaPoster(strImagePath);
+            annot.Thickness = 0;
+        }
 
-            //}
+        /// <summary>
+        /// 插入图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button8_Click(object sender, EventArgs e)
+        {
+            m_AX.CurrentTool = "ESignature Tool";
+            m_AX.CurrentTool = "Image Tool";
+            string strPath = System.Windows.Forms.Application.StartupPath;
+            string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
+            m_AX.AddImageObject(0, 200, 200, 50, 50, strImagePath, 120, 0);
         }
         #endregion
     }
