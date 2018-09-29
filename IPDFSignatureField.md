@@ -1,5 +1,5 @@
 # IPDFSignatureField
-**IPDFSignatureField**帮助访问和操作签名字段。
+**IPDFSignatureField** 帮助访问和操作签名字段。
 
 ## Properties
 
