@@ -53,8 +53,32 @@
     设置AxFoxitPDFSDK的当前工具：
             AxFoxitPDFSDK.CurrentTool = "ESignature Tool";
 
-    另存pdf文件：
-            void SaveAs(string fileName);
+### 2.4 图片注释
+
+    获取某页的注释对象:
+            PDFPageAnnots GetPageAnnots(int pageIndex);
+
+    创建一个新的注释：
+            PDFAnnot AddAnnot(PDFAnnot AnnotToAddAfter, string SubType, float left, float top, float right, float bottom);
+
+    为注释设置图像：
+            int SetMediaPoster(string ImageFilePath);
+
+    去除注释的边框：
+            PDFAnnot.Thickness = 0;
+
+    设置AxFoxitPDFSDK的当前工具：
+            AxFoxitPDFSDK.CurrentTool = "ESignature Tool";
+
+
+`问题：图片注释无法删除`
+
+
+### 2.5 另存pdf文件：
+
+    void SaveAs(string fileName);
+
+
 
 ## 3.相关接口文档
 
