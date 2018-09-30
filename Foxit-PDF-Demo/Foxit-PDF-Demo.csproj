@@ -79,14 +79,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="AxFoxitPDFSDKProLib">
-      <Guid>{B0B1B6D4-2556-4F48-B324-9A3C989E6296}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>aximp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
     <COMReference Include="FoxitPDFSDKProLib">
       <Guid>{B0B1B6D4-2556-4F48-B324-9A3C989E6296}</Guid>
       <VersionMajor>5</VersionMajor>
