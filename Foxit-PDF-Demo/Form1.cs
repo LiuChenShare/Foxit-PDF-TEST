@@ -107,7 +107,7 @@ namespace Foxit_PDF_Demo
         private void button4_Click(object sender, EventArgs e)
         {
             m_AX.CurrentTool = "ESignature Tool";
-
+            m_AX.CurrentTool = "Annot Tool";
             IPDFPageAnnots m_PageAnnots = m_AX.GetPageAnnots(0);
 
             string strPath = System.Windows.Forms.Application.StartupPath;
