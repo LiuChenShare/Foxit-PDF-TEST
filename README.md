@@ -39,7 +39,7 @@
     打开pdf文件并展示：
             bool OpenFile(string file_path, string password);
 
-### 2.3 图片签名
+### 2.3 插入图片签名
 
     获取签名:
             PDFSignatureMgr GetPDFSignatureMgr();
@@ -53,7 +53,7 @@
     设置AxFoxitPDFSDK的当前工具：
             AxFoxitPDFSDK.CurrentTool = "ESignature Tool";
 
-### 2.4 图片注释
+### 2.4 插入图片注释
 
     获取某页的注释对象:
             PDFPageAnnots GetPageAnnots(int pageIndex);
@@ -68,10 +68,7 @@
             PDFAnnot.Thickness = 0;
 
     设置AxFoxitPDFSDK的当前工具：
-            AxFoxitPDFSDK.CurrentTool = "ESignature Tool";
-
-
-`问题：图片注释无法删除`
+            AxFoxitPDFSDK.CurrentTool = "Annot Tool";
 
 
 ### 2.5 另存pdf文件：
