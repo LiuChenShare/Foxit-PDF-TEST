@@ -111,7 +111,7 @@ namespace Foxit_PDF_Demo
             IPDFPageAnnots m_PageAnnots = m_AX.GetPageAnnots(0);
 
             string strPath = System.Windows.Forms.Application.StartupPath;
-            string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
+            string strImagePath = strPath + "..\\..\\..\\res\\260X120.gif";
 
             var annot = m_PageAnnots.AddAnnot(null, "Image", 100, 300, 300, 150);
             annot.SetMediaPoster(strImagePath);
