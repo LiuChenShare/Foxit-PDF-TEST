@@ -50,7 +50,9 @@ namespace Foxit_PDF_TEST
 
             //m_AX.OnClick += OnClick;
 
-
+            //右键菜单
+            m_AX.SetContextMenuString("啦啦啦");
+            m_AX.OnContextMenuIndex += OnContextMenuIndex;
         }
 
         /// <summary>
@@ -276,6 +278,19 @@ namespace Foxit_PDF_TEST
             
         }
 
+
+        /// <summary>
+        /// 啦啦啦
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnContextMenuIndex(object sender, _DFoxitPDFSDKEvents_OnContextMenuIndexEvent e)
+        {
+            if (true)
+            {
+
+            }
+        }
 
         #endregion
 

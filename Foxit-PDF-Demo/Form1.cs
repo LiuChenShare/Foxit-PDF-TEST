@@ -1,4 +1,5 @@
-﻿using FoxitPDFSDKProLib;
+﻿using AxFoxitPDFSDKProLib;
+using FoxitPDFSDKProLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,9 @@ namespace Foxit_PDF_Demo
         private PDFSignatureMgr m_SigFieldMgr;
         private bool state = true;
         private int m_nFileIndex = 0;
+        private int index = 0;
+        private float pageX = 0;
+        private float pageY = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,7 +42,74 @@ namespace Foxit_PDF_Demo
             {
                 MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
             }
+
+            m_AX.OnRButtonClick += OnRButtonClick;
+
+            //右键菜单
+            m_AX.SetContextMenuString("添加签名,tianjia,啦啦啦,嘿嘿嘿");
+
+            //m_AX.ShowContextMenu(false);
+            
+            m_AX.OnContextMenuIndex += OnContextMenuIndex;
+            
         }
+
+
+
+        #region 事件监控
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            if (e.Button == MouseButtons.Right)
+            {
+                //contextMenuStrip1.Show(this, e.Location);
+            }
+        }
+
+
+        /// <summary>
+        /// 右键点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnRButtonClick(object sender, _DFoxitPDFSDKEvents_OnRButtonClickEvent e)
+        {
+            try
+            {
+                if (m_SigFieldMgr == null)
+                {
+                    MessageBox.Show("Please check the KEY license information.\n\nIf you never have a KEY license ,please contact us at sales@foxitsoftware.com");
+                    return;
+                }
+                m_AX.ConvertClientCoordToPageCoord(e.clientX, e.clientY, ref index, ref pageX, ref pageY);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 添加签名
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnContextMenuIndex(object sender, _DFoxitPDFSDKEvents_OnContextMenuIndexEvent e)
+        {
+            if(e.nIndex == 1)
+            {
+                m_AX.CurrentTool = "Annot Tool";
+                IPDFPageAnnots m_PageAnnots = m_AX.GetPageAnnots(index);
+
+                string strPath = System.Windows.Forms.Application.StartupPath;
+                string strImagePath = strPath + "..\\..\\..\\res\\260X120.gif";
+
+                var annot = m_PageAnnots.AddAnnot(null, "Image", pageX, pageY + 50, pageX + 50, pageY);
+                annot.SetMediaPoster(strImagePath);
+                annot.Thickness = 0;
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 改变菜单状态
