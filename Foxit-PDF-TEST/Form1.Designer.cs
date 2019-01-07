@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
@@ -36,10 +37,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.m_AX = new AxFoxitPDFSDKProLib.AxFoxitPDFSDK();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.m_AX = new AxFoxitPDFSDKProLib.AxFoxitPDFSDK();
+            this.MJList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_AX)).BeginInit();
@@ -121,25 +123,6 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.m_AX);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 47);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(856, 674);
-            this.panel1.TabIndex = 2;
-            // 
-            // m_AX
-            // 
-            this.m_AX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_AX.Enabled = true;
-            this.m_AX.Location = new System.Drawing.Point(0, 0);
-            this.m_AX.Name = "m_AX";
-            this.m_AX.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("m_AX.OcxState")));
-            this.m_AX.Size = new System.Drawing.Size(856, 674);
-            this.m_AX.TabIndex = 0;
-            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(393, 3);
@@ -159,6 +142,30 @@
             this.button8.Text = "图片";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.m_AX);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(856, 674);
+            this.panel1.TabIndex = 2;
+            // 
+            // m_AX
+            // 
+            this.m_AX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_AX.Enabled = true;
+            this.m_AX.Location = new System.Drawing.Point(0, 0);
+            this.m_AX.Name = "m_AX";
+            this.m_AX.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("m_AX.OcxState")));
+            this.m_AX.Size = new System.Drawing.Size(856, 674);
+            this.m_AX.TabIndex = 0;
+            // 
+            // MJList
+            // 
+            this.MJList.Name = "MJList";
+            this.MJList.Size = new System.Drawing.Size(181, 26);
             // 
             // Form1
             // 
@@ -187,6 +194,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ContextMenuStrip MJList;
 
 
 

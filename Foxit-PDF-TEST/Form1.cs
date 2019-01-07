@@ -53,7 +53,15 @@ namespace Foxit_PDF_TEST
             //右键菜单
             m_AX.SetContextMenuString("啦啦啦");
             m_AX.OnContextMenuIndex += OnContextMenuIndex;
+
+            m_AX.ShowContextMenu(false);        //隐藏右键
+
+
+            m_AX.OnRButtonClick += axFoxitReaderSDK1_OnRButtonClick;    //绑定右键事件
+
+            InitMj_List();  //设置右键菜单
         }
+
 
         /// <summary>
         /// 隐藏或者显示菜单界面组件
@@ -350,6 +358,53 @@ namespace Foxit_PDF_TEST
             string strPath = System.Windows.Forms.Application.StartupPath;
             string strImagePath = strPath + "..\\..\\..\\res\\icon-close.png";
             m_AX.AddImageObject(0, 200, 200, 50, 50, strImagePath, 120, 0);
+        }
+        #endregion
+
+        #region 右键菜单
+
+        private void axFoxitReaderSDK1_OnRButtonClick(object sender, _DFoxitPDFSDKEvents_OnRButtonClickEvent e)
+        {
+            float xx = 0;
+            float yy = 0;
+            int page = 0;
+            m_AX.ConvertClientCoordToPageCoord(e.clientX, e.clientY, ref page, ref xx, ref yy);
+            xx = xx - 10;
+            yy = yy - 10;
+
+
+            int Rx = e.clientX + 120;
+            int Ry = e.clientY + 240;
+            MJList.Show(new Point(Rx, Ry));
+        }
+
+        public void InitMj_List()
+        {
+            MJList.Items.Clear();
+            MJList.Visible = true;
+
+            ToolStripMenuItem menu = new ToolStripMenuItem
+            {
+                Text = "\n111文本\n",
+                Name = "111名称",
+                Tag = "111类型",
+                //Margin = new Padding(0, 10, 0, 10)
+                //Size = new Size(200, 50),
+                //AutoSize = false
+            };
+            MJList.Items.Add(menu);
+            ToolStripMenuItem menu2 = new ToolStripMenuItem
+            {
+                Text = "222文本",
+                Name = "222名称",
+                Tag = "222类型",
+                //Margin = new Padding(0, 10, 0, 10)
+                //Size = new Size(200, 50),
+                //AutoSize = false
+                Font = new Font(new FontFamily("Microsoft YaHei UI") { }, 24)
+            };
+            MJList.Items.Add(menu2);
+
         }
         #endregion
     }
